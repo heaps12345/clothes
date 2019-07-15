@@ -6,6 +6,7 @@ export const CollectionItemContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+
   &:not(:last-child) {
     margin-right: 25px;
   }
@@ -31,6 +32,15 @@ export const CollectionFooterContainer = styled.div`
   height: 5%;
 `;
 
-export const Name = styled.div``;
+export const CustomButton = styled.button`
+
+  border: none;
+    height: 50px;
+    padding: 0 35px;
+    min-width: 165px;
+    display: flex;
+    justify-content: center;
+}
+`;
 
 export const Price = styled.span``;

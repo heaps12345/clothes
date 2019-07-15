@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { CollectionItemContainer, CollectionFooterContainer, BackgroundImageContainer } from './collection-item.styles';
+import {
+  CollectionItemContainer,
+  CustomButton,
+  CollectionFooterContainer,
+  BackgroundImageContainer
+} from './collection-item.styles';
 
 const CollectionItem = ({ name, imageUrl, price }) => {
   return (
@@ -10,6 +15,7 @@ const CollectionItem = ({ name, imageUrl, price }) => {
         <div>{name}</div>
         <span>${price}</span>
       </CollectionFooterContainer>
+      <CustomButton>ADD TO CART</CustomButton>
     </CollectionItemContainer>
   );
 };
