@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 export const createUserFirestoreDocument = async userAuth => {
   if (!userAuth) return;
-
+  debugger;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const userDoc = await userRef.get();
 
@@ -33,6 +33,7 @@ export const createUserFirestoreDocument = async userAuth => {
       console.log('error creating user', err.message);
     }
   }
+  return userRef;
 };
 
 export const auth = firebase.auth();

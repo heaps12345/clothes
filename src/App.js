@@ -11,10 +11,24 @@ class App extends React.Component {
     currentUser: null
   };
 
+  unsubscribeFromAuth = null;
+
   componentDidMount() {
-    auth.onAuthStateChanged(async user => {
-      this.setState({ currentUser: user });
-      console.log(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      const userRef = await createUserFirestoreDocument(userAuth);
+      if (userAuth) {
+        userRef.onSnapshot(snapshot => {
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
+          });
+          console.log(this.state);
+        });
+        // this.setState({ currentUser: user });
+        // console.log(h);
+      }
     });
   }
 
