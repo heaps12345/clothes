@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CustomButton from '../custom-button/custom-button.component';
 import { SignUpContainer, Title, CustomButtonContainer } from './sign-up-styles';
 import FormInput from '../form-input/form-input.component';
+import { auth, createUserFirestoreDocument } from '../../firebase/firebase.utils';
 
 export default class SignUp extends Component {
   state = {
@@ -19,9 +20,27 @@ export default class SignUp extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    console.log(this.state);
+    const { email, password, confirmPassword, displayName } = this.state;
+
+    if (password !== confirmPassword) {
+      alert('passwrods dont match');
+      return;
+    }
+    try {
+      debugger;
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      await createUserFirestoreDocument(user, { displayName });
+      this.setState({
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
   render() {
     const { email, password, confirmPassword, displayName } = this.state;
@@ -49,7 +68,7 @@ export default class SignUp extends Component {
           />
 
           <CustomButtonContainer>
-            <CustomButton type="submit">Sign In</CustomButton>
+            <CustomButton type="submit">Sign Up</CustomButton>
           </CustomButtonContainer>
         </form>
       </SignUpContainer>
