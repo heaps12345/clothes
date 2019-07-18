@@ -24,10 +24,9 @@ class App extends React.Component {
               ...snapshot.data()
             }
           });
-          console.log(this.state);
         });
         // this.setState({ currentUser: user });
-        // console.log(h);
+        // console.log();
       }
     });
   }
