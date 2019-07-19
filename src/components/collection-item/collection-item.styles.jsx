@@ -1,18 +1,25 @@
 import styled from 'styled-components';
+import CustomButton from '../custom-button/custom-button.component';
 
 export const CollectionItemContainer = styled.div`
   width: 22vw;
   height: 350px;
   display: flex;
   flex-direction: column;
-
+  position: relative;
 
   &:not(:last-child) {
     margin-right: 25px;
   }
 
   &:hover {
-    opacity: 0.8;
+    .image {
+      opacity: 0.8;
+    }
+    button {
+      display: block;
+      opacity: 0.85;
+    }
   }
 `;
 
@@ -32,14 +39,14 @@ export const CollectionFooterContainer = styled.div`
   height: 5%;
 `;
 
-export const CustomButton = styled.button`
+export const AddButton = styled(CustomButton)`
+  position: absolute;
+  top: 255px;
+  width: 80%;
+  opacity: 0.7;
+  align-self: center;
+  display: none;
 
-  border: none;
-    height: 50px;
-    padding: 0 35px;
-    min-width: 165px;
-    display: flex;
-    justify-content: center;
 }
 `;
 

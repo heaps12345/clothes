@@ -23,12 +23,24 @@ const googleSignInStyles = css`
   }
 `;
 
+const invertedStyles = css`
+  border: 1px solid #000;
+  color: #000;
+  background-color: #fff;
+
+  &:hover {
+    color: #fff;
+    background-color: #000;
+    border: none;
+  }
+`;
+
 const getButtonStyles = props => {
   if (props.googleSignIn) {
     return googleSignInStyles;
   }
 
-  return buttonStyles;
+  return props.inverted ? invertedStyles : buttonStyles;
 };
 
 export const CustomButtonContainer = styled.button`
