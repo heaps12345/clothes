@@ -27,7 +27,6 @@ const CollectionItem = ({ item, addItemToCart }) => {
   );
 };
 
-const mapStateToProps = state => ({});
 
 export default connect(
   null,
