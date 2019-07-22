@@ -21,12 +21,11 @@ const CollectionItem = ({ item, addItemToCart }) => {
       </CollectionFooterContainer>
 
       <AddButton onClick={() => addItemToCart(item)} inverted>
-        Add to cart
+        ADD TO CART
       </AddButton>
     </CollectionItemContainer>
   );
 };
-
 
 export default connect(
   null,
